@@ -555,6 +555,23 @@ li {
   box-shadow: var(--shadow-soft);
 }
 
+.about-logo-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 28px;
+  padding: 48px 40px;
+  box-shadow: var(--shadow-soft);
+}
+
+.about-logo-image {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  display: block;
+}
+
 .post-card {
   overflow: hidden;
 }
