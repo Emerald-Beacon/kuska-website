@@ -753,7 +753,6 @@ li {
   }
 
   .hero__grid,
-  .split-panel,
   .article-shell {
     grid-template-columns: 1fr;
   }
@@ -805,6 +804,10 @@ li {
 
   .site-header {
     position: sticky;
+  }
+
+  .split-panel {
+    grid-template-columns: 1fr;
   }
 
   .service-grid,
