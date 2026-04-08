@@ -224,16 +224,19 @@ def location_cards() -> str:
 
 def insurance_strip() -> str:
     logos = [
-        ("/wp-content/uploads/2025/05/medicaid-3.png", "Utah Medicaid"),
-        ("/wp-content/uploads/2025/05/select-health-logo.jpg", "Select Health"),
-        ("/wp-content/uploads/2025/05/Optum-Logo-2011-e1746217706743.png", "Optum"),
-        ("/wp-content/uploads/2025/05/United-Healthcare-Logo.png", "United Healthcare"),
-        ("/wp-content/uploads/2025/05/Evernorth_Logo.png", "Evernorth"),
-        ("/wp-content/uploads/2025/05/blue-cross-blue-shield-vector-logo.png", "Blue Cross Blue Shield"),
+        ("/wp-content/uploads/2025/05/medicaid-3.png", "Utah Medicaid", "https://medicaid.utah.gov/"),
+        ("/wp-content/uploads/2025/05/select-health-logo.jpg", "Select Health", "https://www.selecthealth.org/"),
+        ("/wp-content/uploads/2025/05/Optum-Logo-2011-e1746217706743.png", "Optum", "https://www.optum.com/"),
+        ("/wp-content/uploads/2025/05/United-Healthcare-Logo.png", "UnitedHealthcare", "https://www.uhc.com/"),
+        ("/wp-content/uploads/2025/05/Evernorth_Logo.png", "Evernorth", "https://www.evernorth.com/"),
+        ("/wp-content/uploads/2025/05/blue-cross-blue-shield-vector-logo.png", "Blue Cross Blue Shield", "https://www.bcbs.com/"),
     ]
     items = []
-    for src, alt in logos:
-        items.append(f'<li><img src="{src}" alt="{alt}" loading="lazy"></li>')
+    for src, alt, href in logos:
+        items.append(
+            f'<li><a href="{href}" target="_blank" rel="noopener noreferrer" aria-label="{alt}">'
+            f'<img src="{src}" alt="{alt}" loading="lazy"></a></li>'
+        )
     return "<ul class=\"logo-strip\">" + "".join(items) + "</ul>"
 
 
@@ -608,30 +611,30 @@ def page_bodies(posts: list[Post], privacy_html: str) -> dict[str, tuple[str, st
         "Kuska Autism Services is a locally owned Utah provider focused on helping children and families feel seen, supported, and equipped with real next steps.",
         dedent(
             """
-            <section class="section">
-              <div class="shell split-panel">
-                <div>
+            <section class="section section--about-story">
+              <div class="shell split-panel about-story-grid">
+                <div class="about-story-copy">
                   <p class="eyebrow">Why the name matters</p>
                   <h2>Kuska means “together.”</h2>
                   <p>The current site shares that Kuska comes from the Quechua language and reflects how the team works shoulder to shoulder with the families they serve. That idea belongs at the center of the brand, because it tells parents immediately what kind of partner they can expect.</p>
                   <p>We’re preserving that story while making it more accessible, so families understand not only what Kuska means linguistically, but what it means practically: collaboration, trust, consistency, and compassionate care.</p>
                 </div>
-                <div class="feature-card feature-card--tall">
+                <div class="feature-card feature-card--tall about-story-card">
                   <h3>Family-centered by design</h3>
                   <p>Every plan is individualized. Every child is approached with warmth and dignity. Every caregiver is treated like a valuable part of the team.</p>
                 </div>
               </div>
             </section>
 
-            <section class="section section--tint">
-              <div class="shell split-panel">
-                <div class="feature-card feature-card--plain">
+            <section class="section section--about-logo">
+              <div class="shell split-panel about-logo-grid">
+                <div class="feature-card feature-card--plain about-logo-copy">
                   <p class="eyebrow">The logo story</p>
                   <h2>The two vicuñas in the mark are intentional.</h2>
                   <p>The current brand story explains that the logo features two hand-illustrated vicuñas forming a “K.” The vicuña is a sacred Andean animal with deep ties to Peru, symbolizing something rare, precious, and worth caring for with intention.</p>
                   <p>That symbolism aligns beautifully with Kuska’s work: honoring each child’s individuality while building something strong and steady around them.</p>
                 </div>
-                <div>
+                <div class="about-logo-image-wrap">
                   <img class="rounded-image" src="/wp-content/uploads/2025/05/About-2.jpg" alt="Kuska team story image" loading="lazy">
                 </div>
               </div>
