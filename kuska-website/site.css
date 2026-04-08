@@ -340,6 +340,25 @@ li {
   border: 10px solid #fff;
 }
 
+.hero--home .hero-photo-stack {
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+}
+
+.hero--home .hero-photo--large {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border: 14px solid #fff;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.hero--home .hero-photo--small {
+  display: none;
+}
+
 .hero-portrait {
   width: 100%;
   min-height: 380px;
@@ -787,6 +806,11 @@ li {
     align-items: flex-start;
   }
 
+  .hero--home .hero-photo-stack {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+  }
+
   .cta-band h2 {
     max-width: none;
   }
@@ -833,6 +857,10 @@ li {
 
   .hero-photo-stack {
     min-height: 320px;
+  }
+
+  .hero--home .hero-photo-stack {
+    min-height: 0;
   }
 
   .hero-badges li,
