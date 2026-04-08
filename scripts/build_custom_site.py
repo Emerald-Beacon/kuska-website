@@ -319,7 +319,6 @@ def layout(
           <div class="announcement-bar">
             <div class="shell announcement-bar__inner">
               <p>{html.escape(ANNOUNCEMENT)}</p>
-              <a href="/get-started/">Start here</a>
             </div>
           </div>
           <header class="site-header">
