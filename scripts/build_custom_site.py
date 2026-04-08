@@ -400,7 +400,7 @@ def home_page(posts: list[Post]) -> tuple[str, str]:
             </div>
             <div class="hero__visual">
               <div class="hero-photo-stack">
-                <img class="hero-photo hero-photo--large" src="/wp-content/uploads/2025/05/Image1.jpg" alt="Child playing with therapist" loading="eager">
+                <img class="hero-photo hero-photo--large" src="/wp-content/uploads/2026/04/kuska-team-hero.jpeg" alt="Kuska Autism Services team" loading="eager">
                 <img class="hero-photo hero-photo--small" src="/wp-content/uploads/2025/05/About-1.jpeg" alt="Parent and child smiling together" loading="lazy">
               </div>
             </div>
