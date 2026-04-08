@@ -475,6 +475,7 @@ li {
 .feature-card--plain,
 .feature-card--tall {
   height: 100%;
+  min-height: 200px;
 }
 
 .chip-cloud {
