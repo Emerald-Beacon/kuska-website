@@ -389,11 +389,14 @@ def home_page(posts: list[Post]) -> tuple[str, str]:
                 <a class="button" href="/get-started/">Schedule a consultation</a>
                 <a class="button button--secondary" href="/diagnostic-service/">Explore autism evaluations</a>
               </div>
-              <ul class="hero-badges">
-                <li>No-waitlist evaluation inquiries</li>
-                <li>In-home, clinic, and hybrid ABA options</li>
-                <li>Parent partnership at every stage</li>
-              </ul>
+              <div class="hero-highlights" aria-label="Kuska service highlights">
+                <p class="hero-highlights__label">What families can expect</p>
+                <ul class="hero-badges">
+                  <li>No-waitlist evaluation inquiries</li>
+                  <li>In-home, clinic, and hybrid ABA options</li>
+                  <li>Parent partnership at every stage</li>
+                </ul>
+              </div>
             </div>
             <div class="hero__visual">
               <div class="hero-photo-stack">

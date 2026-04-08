@@ -260,12 +260,44 @@ li {
 }
 
 .hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: grid;
+  gap: 10px;
 }
 
-.hero-badges li,
+.hero-highlights {
+  margin-top: 26px;
+  max-width: 36rem;
+}
+
+.hero-highlights__label {
+  margin: 0 0 12px;
+  color: var(--brand-blue-deep);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-badges li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--brand-blue-deep);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.hero-badges li::before {
+  content: "";
+  position: absolute;
+  top: 0.78em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-yellow), #f6d861);
+  box-shadow: 0 0 0 4px rgba(235, 201, 78, 0.2);
+}
+
 .chip-cloud span {
   display: inline-flex;
   align-items: center;
