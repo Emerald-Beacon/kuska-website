@@ -593,9 +593,10 @@ li {
 
 .about-logo-mark {
   display: inline-block;
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.12em;
+  width: 0.82em;
+  height: 0.82em;
+  margin-left: 0.06em;
+  vertical-align: -0.06em;
   border-radius: 50%;
   box-shadow: 0 6px 16px rgba(0, 78, 133, 0.25);
 }
