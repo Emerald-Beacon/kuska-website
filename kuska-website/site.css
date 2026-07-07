@@ -189,6 +189,24 @@ li {
   gap: 4px;
 }
 
+@media (hover: hover) {
+  .nav-dropdown:hover .nav-dropdown__menu,
+  .nav-dropdown:focus-within .nav-dropdown__menu {
+    display: grid;
+    gap: 4px;
+  }
+
+  /* invisible bridge so the pointer can cross the gap to the menu */
+  .nav-dropdown:hover::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
+}
+
 .site-header__cta,
 .button-row {
   display: flex;
