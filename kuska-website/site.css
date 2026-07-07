@@ -581,6 +581,12 @@ li {
   border-radius: 28px;
 }
 
+.about-story-copy h3 {
+  margin: 28px 0 8px;
+  color: var(--brand-blue-deep);
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
 .about-story-card,
 .about-logo-copy {
   padding: 30px 32px;
