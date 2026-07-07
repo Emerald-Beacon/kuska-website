@@ -450,7 +450,9 @@ li {
 .location-card h3,
 .post-card h3,
 .article-content h2,
-.article-content h3 {
+.article-content h3,
+.prose-card h2,
+.prose-card h3 {
   margin: 0 0 14px;
   color: var(--brand-blue-deep);
   font-family: "Montserrat Alternates", sans-serif;
@@ -810,6 +812,21 @@ li {
 
 .prose-card > * + * {
   margin-top: 18px;
+}
+
+.prose-card h2 {
+  margin-top: 34px;
+  margin-bottom: 0;
+  font-size: 1.4rem;
+}
+
+.prose-card ul {
+  padding-left: 24px;
+}
+
+.prose-card a {
+  color: var(--brand-blue-deep);
+  font-weight: 600;
 }
 
 .site-footer {
