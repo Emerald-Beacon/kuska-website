@@ -7,6 +7,31 @@
     year.textContent = String(new Date().getFullYear());
   }
 
+  var dropdown = document.querySelector(".nav-dropdown");
+  if (dropdown) {
+    var dropdownToggle = dropdown.querySelector(".nav-dropdown__toggle");
+
+    dropdownToggle.addEventListener("click", function () {
+      var open = dropdown.classList.toggle("is-open");
+      dropdownToggle.setAttribute("aria-expanded", String(open));
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove("is-open");
+        dropdownToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && dropdown.classList.contains("is-open")) {
+        dropdown.classList.remove("is-open");
+        dropdownToggle.setAttribute("aria-expanded", "false");
+        dropdownToggle.focus();
+      }
+    });
+  }
+
   if (!toggle) {
     return;
   }
