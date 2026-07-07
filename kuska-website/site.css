@@ -587,12 +587,17 @@ li {
   font-family: "Montserrat Alternates", sans-serif;
 }
 
+.about-logo-mark-wrap {
+  white-space: nowrap;
+}
+
 .about-logo-mark {
-  width: 96px;
-  height: 96px;
-  margin-bottom: 20px;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.12em;
   border-radius: 50%;
-  box-shadow: 0 8px 20px rgba(0, 78, 133, 0.18);
+  box-shadow: 0 6px 16px rgba(0, 78, 133, 0.25);
 }
 
 .about-story-card,
