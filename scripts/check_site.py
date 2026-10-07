@@ -244,6 +244,16 @@ def check_home_hero():
     return failures
 
 
+def check_home_meadow():
+    doc = Doc.load(ROOT / "index.html")
+    failures = []
+    if len(doc.find("article", "story-card")) != 3:
+        failures.append("index.html: meadow needs exactly 3 .story-card articles")
+    if len(doc.find("li", "flower-tag")) != 10:
+        failures.append("index.html: meadow needs exactly 10 .flower-tag items")
+    return failures
+
+
 CHECKS = [
     check_head,
     check_local_refs,
@@ -253,6 +263,7 @@ CHECKS = [
     check_sprite,
     check_art,
     check_home_hero,
+    check_home_meadow,
 ]
 
 
