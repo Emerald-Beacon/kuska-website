@@ -188,12 +188,36 @@ def check_tokens_and_contrast():
     return failures
 
 
+SPRITE_IDS = {"hills-back", "hills-front", "wasatch", "cloud", "sun", "moon",
+              "star", "heart", "flower", "trail", "edge-wave"}
+
+
+def check_sprite():
+    failures = []
+    sprite = ROOT / "images/storybook/illustrations.svg"
+    if not sprite.exists():
+        return ["images/storybook/illustrations.svg: missing"]
+    ids = set(re.findall(r'<symbol[^>]*\bid="([\w-]+)"', sprite.read_text(encoding="utf-8")))
+    for missing in sorted(SPRITE_IDS - ids):
+        failures.append(f"illustrations.svg: missing symbol #{missing}")
+    if not (ROOT / "images/storybook/stars-tile.svg").exists():
+        failures.append("images/storybook/stars-tile.svg: missing")
+    for page in site_pages():
+        for el in Doc.load(page).elements:
+            href = el.attrs.get("href", "")
+            if el.tag == "use" and "#" in href:
+                if href.split("#", 1)[1] not in ids:
+                    failures.append(f"{rel(page)}: <use> points at unknown symbol {href}")
+    return failures
+
+
 CHECKS = [
     check_head,
     check_local_refs,
     check_img_alt,
     check_css_base,
     check_tokens_and_contrast,
+    check_sprite,
 ]
 
 

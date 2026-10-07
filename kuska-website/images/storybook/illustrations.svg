@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="hills-back" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="currentColor" d="M0 220C180 150 320 120 480 170C640 220 760 120 920 110C1080 100 1220 170 1440 140V320H0Z"/>
+  </symbol>
+  <symbol id="hills-front" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="currentColor" d="M0 250C200 190 360 225 540 245C720 265 860 195 1040 205C1220 215 1320 255 1440 235V320H0Z"/>
+  </symbol>
+  <symbol id="wasatch" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="currentColor" d="M0 230L120 150L190 190L300 70L380 140L450 100L560 190L660 120L760 170L880 60L980 150L1080 110L1200 180L1310 90L1440 160V320H0Z"/>
+    <path fill="#fff" opacity=".85" d="M300 70L336 102L316 98L298 110L276 96ZM880 60L914 94L894 90L876 102L852 88ZM1310 90L1340 117L1322 114L1305 124L1286 110Z"/>
+  </symbol>
+  <symbol id="cloud" viewBox="0 0 120 60">
+    <g fill="currentColor">
+      <circle cx="38" cy="36" r="18"/>
+      <circle cx="64" cy="26" r="22"/>
+      <circle cx="88" cy="38" r="16"/>
+      <rect x="20" y="36" width="84" height="20" rx="10"/>
+    </g>
+  </symbol>
+  <symbol id="sun" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="24" fill="currentColor"/>
+    <g stroke="currentColor" stroke-width="6" stroke-linecap="round">
+      <path d="M50 6v12M50 82v12M6 50h12M82 50h12M19 19l8 8M73 73l8 8M81 19l-8 8M27 73l-8 8"/>
+    </g>
+  </symbol>
+  <symbol id="moon" viewBox="0 0 100 100">
+    <path fill="currentColor" d="M62 12a38 38 0 1 0 26 64A32 32 0 0 1 62 12Z"/>
+  </symbol>
+  <symbol id="star" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 1C13 8 16 11 23 12C16 13 13 16 12 23C11 16 8 13 1 12C8 11 11 8 12 1Z"/>
+  </symbol>
+  <symbol id="heart" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21Z"/>
+  </symbol>
+  <symbol id="flower" viewBox="0 0 24 24">
+    <g fill="currentColor">
+      <circle cx="12" cy="6" r="4"/>
+      <circle cx="17.7" cy="10.2" r="4"/>
+      <circle cx="15.5" cy="17" r="4"/>
+      <circle cx="8.5" cy="17" r="4"/>
+      <circle cx="6.3" cy="10.2" r="4"/>
+    </g>
+    <circle cx="12" cy="12" r="3.2" fill="#ebc94e"/>
+  </symbol>
+  <symbol id="trail" viewBox="0 0 1000 200" preserveAspectRatio="none">
+    <path d="M20 160C200 40 320 180 500 100S800 30 980 120" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 18" vector-effect="non-scaling-stroke"/>
+  </symbol>
+  <symbol id="edge-wave" viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path fill="currentColor" d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0Z"/>
+  </symbol>
+</svg>
