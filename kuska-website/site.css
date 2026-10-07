@@ -855,6 +855,41 @@ li {
   margin-top: 28px;
 }
 
+.article-content table {
+  width: 100%;
+  margin: 26px 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.article-content th,
+.article-content td {
+  padding: 12px 14px;
+  border: 1px solid var(--brand-line);
+  text-align: left;
+  vertical-align: top;
+  color: var(--brand-muted);
+}
+
+.article-content thead th,
+.article-content tr:first-child td {
+  background: var(--brand-cloud);
+  color: var(--brand-blue-deep);
+  font-weight: 700;
+}
+
+.article-content .table-scroll {
+  overflow-x: auto;
+}
+
+.form-consent {
+  margin: 18px auto 0;
+  max-width: 68ch;
+  color: var(--brand-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 .condition-note {
   margin: 28px 0 0;
   max-width: 68ch;
