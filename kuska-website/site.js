@@ -23,6 +23,13 @@
       }
     });
 
+    dropdown.addEventListener("focusout", function (event) {
+      if (!dropdown.contains(event.relatedTarget)) {
+        dropdown.classList.remove("is-open");
+        dropdownToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && dropdown.classList.contains("is-open")) {
         dropdown.classList.remove("is-open");
@@ -39,6 +46,14 @@
   toggle.addEventListener("click", function () {
     var open = body.classList.toggle("nav-open");
     toggle.setAttribute("aria-expanded", String(open));
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && body.classList.contains("nav-open")) {
+      body.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.focus();
+    }
   });
 
   document.addEventListener("click", function (event) {

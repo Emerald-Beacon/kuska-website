@@ -156,7 +156,6 @@ li {
 }
 
 .site-nav__link.is-active {
-  color: var(--brand-blue);
   background: rgba(183, 217, 243, 0.42);
 }
 
@@ -190,8 +189,7 @@ li {
 }
 
 @media (hover: hover) {
-  .nav-dropdown:hover .nav-dropdown__menu,
-  .nav-dropdown:focus-within .nav-dropdown__menu {
+  .nav-dropdown:hover .nav-dropdown__menu {
     display: grid;
     gap: 4px;
   }
@@ -234,10 +232,27 @@ li {
   transform: translateY(-1px);
 }
 
+.button {
+  transition: transform 0.18s ease;
+}
+
 .button:focus-visible,
 .text-link:focus-visible,
 .nav-toggle:focus-visible {
-  outline: 3px solid var(--brand-blue);
+  outline: 3px solid var(--brand-blue-deep);
+  outline-offset: 2px;
+}
+
+/* The CTA band is a dark blue gradient; a blue ring on it measures 1.6-2.3:1. */
+.cta-band .button:focus-visible,
+.cta-band .text-link:focus-visible {
+  outline-color: #fff;
+}
+
+/* Everything not covered above fell through to the UA default ring, which is
+   thin and single-colour outside Chrome. */
+:focus-visible {
+  outline: 3px solid var(--brand-blue-deep);
   outline-offset: 2px;
 }
 
@@ -315,7 +330,7 @@ li {
 .eyebrow,
 .meta-line {
   margin: 0 0 10px;
-  color: var(--brand-blue);
+  color: var(--brand-blue-deep);
   font-size: 0.83rem;
   font-weight: 800;
   letter-spacing: 0.18em;
@@ -737,6 +752,12 @@ li {
   padding: 24px;
 }
 
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
 .faq-list {
   display: grid;
   gap: 18px;
@@ -748,6 +769,10 @@ li {
 
 .faq-item summary {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
   padding: 24px 26px;
   list-style: none;
   font-weight: 700;
@@ -757,6 +782,21 @@ li {
 
 .faq-item summary::-webkit-details-marker {
   display: none;
+}
+
+.faq-item summary::after {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--brand-blue);
+  border-bottom: 2px solid var(--brand-blue);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: translateY(2px) rotate(-135deg);
 }
 
 .faq-item p {
@@ -959,6 +999,9 @@ li {
 }
 
 .footer-list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   color: var(--brand-blue-deep);
   text-decoration: none;
 }
@@ -1175,5 +1218,20 @@ li {
   .prose-card p,
   .prose-card li {
     max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
