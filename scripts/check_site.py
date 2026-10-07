@@ -264,6 +264,21 @@ def check_home_name_story():
     return failures
 
 
+def check_home_trail_and_insurance():
+    doc = Doc.load(ROOT / "index.html")
+    failures = []
+    if len(doc.find("li", "trail__stop")) != 3:
+        failures.append("index.html: trail needs exactly 3 .trail__stop items")
+    tracks = doc.find("ul", "logo-marquee__track")
+    if len(tracks) != 2 or tracks[1].attrs.get("aria-hidden") != "true":
+        failures.append("index.html: marquee needs 2 tracks, the second aria-hidden='true'")
+    main_html = doc.raw[doc.raw.index("<main"):doc.raw.index("</main>")]
+    for tag in re.findall(r"<img\b[^>]*>", main_html):
+        if "/wp-content/uploads/2025/05/" in tag and 'width="' not in tag:
+            failures.append(f"index.html: logo {tag} needs width/height")
+    return failures
+
+
 CHECKS = [
     check_head,
     check_local_refs,
@@ -275,6 +290,7 @@ CHECKS = [
     check_home_hero,
     check_home_meadow,
     check_home_name_story,
+    check_home_trail_and_insurance,
 ]
 
 
