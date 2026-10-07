@@ -452,6 +452,151 @@
   }
 }
 
+/* ---------- Name story ---------- */
+.sky--cream {
+  background: var(--cream);
+}
+
+.name-story__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: clamp(36px, 6vw, 88px);
+}
+
+.name-story__art {
+  position: relative;
+  min-height: 460px;
+}
+
+.polaroid {
+  position: relative;
+  margin: 0;
+  padding: 12px 12px 14px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+  transform: rotate(-3deg);
+}
+
+/* Washi tape */
+.polaroid::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: calc(50% - 45px);
+  width: 90px;
+  height: 26px;
+  background: rgba(235, 201, 78, 0.72);
+  transform: rotate(4deg);
+}
+
+.polaroid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.polaroid figcaption {
+  margin-top: 8px;
+  color: var(--deep-blue);
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.name-story__polaroid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 72%;
+}
+
+.name-story__kuska {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60%;
+}
+
+.name-story__copy h2 {
+  margin: 0 0 16px;
+  color: var(--deep-blue);
+  font-size: clamp(2rem, 3.6vw, 3.4rem);
+  line-height: 1.08;
+}
+
+.name-story__copy h2 em {
+  color: var(--kuska-blue);
+}
+
+.value-badges {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.value-badge {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  column-gap: 12px;
+  align-items: start;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.value-badge svg {
+  grid-row: span 2;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 50%;
+  background: var(--sky);
+  color: var(--deep-blue);
+}
+
+.value-badge:nth-child(2) svg { background: #fbeec0; color: #8a6a00; }
+.value-badge:nth-child(3) svg { background: #fcdcd2; color: #a8432a; }
+.value-badge:nth-child(4) svg { background: #d6ebdc; color: #3f7a52; }
+
+.value-badge strong {
+  color: var(--deep-blue);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+@media (max-width: 820px) {
+  .name-story__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .name-story__art {
+    min-height: 380px;
+    max-width: 460px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .value-badges {
+    grid-template-columns: 1fr;
+  }
+
+  .name-story__art {
+    min-height: 320px;
+  }
+}
+
 /* Motion off switch — every animated selector added later is listed here. */
 @media (prefers-reduced-motion: reduce) {
   .scene__sun,

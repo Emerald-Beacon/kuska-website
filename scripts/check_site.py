@@ -254,6 +254,16 @@ def check_home_meadow():
     return failures
 
 
+def check_home_name_story():
+    doc = Doc.load(ROOT / "index.html")
+    failures = []
+    if len(doc.find("li", "value-badge")) != 4:
+        failures.append("index.html: name story needs exactly 4 .value-badge items")
+    if not doc.find("figure", "polaroid"):
+        failures.append("index.html: name story needs a .polaroid photo")
+    return failures
+
+
 CHECKS = [
     check_head,
     check_local_refs,
@@ -264,6 +274,7 @@ CHECKS = [
     check_art,
     check_home_hero,
     check_home_meadow,
+    check_home_name_story,
 ]
 
 
