@@ -2,6 +2,300 @@
    Loaded after site.css on every page. Homepage uses all of it in Phase 1;
    interior pages adopt components in Phase 2. */
 
+/* ---------- Skies ---------- */
+.sky--dawn {
+  background: linear-gradient(180deg, #fde9c9 0%, var(--cream) 48%, #eef7fd 100%);
+}
+
+.sky--meadow {
+  background: linear-gradient(180deg, #d6ebdc 0%, #f1f8f2 38%, var(--cream) 100%);
+}
+
+/* ---------- Scene layers ---------- */
+.scene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scene__painting {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
+.scene__sun {
+  position: absolute;
+  top: 7%;
+  right: 10%;
+  width: clamp(80px, 9vw, 140px);
+  height: clamp(80px, 9vw, 140px);
+  color: var(--sun);
+  animation: kuska-spin 90s linear infinite;
+}
+
+.scene__cloud {
+  position: absolute;
+  width: clamp(90px, 11vw, 160px);
+  height: clamp(45px, 5.5vw, 80px);
+  color: #fff;
+  opacity: 0.92;
+  animation: kuska-drift 22s ease-in-out infinite alternate;
+}
+
+.scene__cloud--one {
+  top: 10%;
+  left: 5%;
+}
+
+.scene__cloud--two {
+  top: 26%;
+  left: 46%;
+  width: clamp(70px, 8vw, 120px);
+  height: clamp(35px, 4vw, 60px);
+  opacity: 0.75;
+  animation-duration: 28s;
+}
+
+.scene__ridge,
+.scene__hills-back,
+.scene__hills {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.scene__ridge {
+  bottom: 70px;
+  height: clamp(120px, 18vw, 260px);
+  color: #a9cce8;
+}
+
+.scene__hills-back {
+  bottom: 20px;
+  height: clamp(100px, 14vw, 200px);
+  color: #bfe0c9;
+}
+
+.scene__hills {
+  bottom: -1px;
+  height: clamp(70px, 9vw, 140px);
+  color: #d6ebdc; /* = top of .sky--meadow so the hero melts into the next section */
+}
+
+@keyframes kuska-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(48px); }
+}
+
+@keyframes kuska-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes kuska-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ---------- Photo frames ---------- */
+.photo-window {
+  margin: 0;
+  overflow: hidden;
+  border: 6px solid #fff;
+  border-radius: var(--radius-xl);
+  background: var(--sky);
+  box-shadow: var(--shadow-soft);
+}
+
+.photo-window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-window--arch {
+  border-radius: 999px 999px var(--radius-xl) var(--radius-xl);
+}
+
+.photo-window--round {
+  border-radius: 50%;
+}
+
+/* ---------- Stickers ---------- */
+.sticker-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 34px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(23, 52, 74, 0.08);
+  transform: rotate(-1.5deg);
+}
+
+.sticker:nth-child(even) {
+  transform: rotate(1.5deg);
+}
+
+.sticker svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+.sticker--sun svg { color: #d9a92a; }
+.sticker--sage svg { color: #5f9a72; }
+.sticker--coral svg { color: var(--coral); }
+
+/* ---------- Characters ---------- */
+.kuska {
+  height: auto;
+  filter: drop-shadow(0 12px 16px rgba(23, 52, 74, 0.16));
+}
+
+/* ---------- Hero ---------- */
+.valley-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(48px, 7vw, 96px) 0 clamp(130px, 15vw, 210px);
+}
+
+.valley-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+}
+
+.valley-hero h1 {
+  margin: 0 0 18px;
+}
+
+.valley-hero__label {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--deep-blue);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.valley-hero__title {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+}
+
+.valley-hero__lead {
+  max-width: 34ch;
+  margin: 0 0 28px;
+  font-size: clamp(1.08rem, 1.4vw, 1.25rem);
+}
+
+.valley-hero .button-row {
+  align-items: center;
+  gap: 22px;
+}
+
+.valley-hero__art {
+  position: relative;
+  min-height: clamp(360px, 40vw, 540px);
+}
+
+.valley-hero__photo-a {
+  position: absolute;
+  top: 0;
+  right: 6%;
+  width: 60%;
+  aspect-ratio: 4 / 5;
+}
+
+.valley-hero__photo-b {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  width: 38%;
+  aspect-ratio: 1;
+}
+
+.valley-hero__kuska {
+  position: absolute;
+  right: -2%;
+  bottom: -6%;
+  width: clamp(140px, 17vw, 230px);
+  animation: kuska-bob 5s ease-in-out infinite;
+}
+
+@media (max-width: 820px) {
+  .valley-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .valley-hero__art {
+    min-height: 340px;
+    max-width: 460px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Keep the sun out from behind the copy: tuck it into the art area. */
+  .scene__sun {
+    top: auto;
+    right: auto;
+    bottom: 394px; /* art (340) + hero bottom padding (130) - 76 → top-left of the art area */
+    left: 4%;
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .valley-hero__art {
+    min-height: 290px;
+  }
+
+  .scene__sun {
+    bottom: 344px;
+  }
+
+  .valley-hero__kuska {
+    right: 0;
+    width: 120px;
+  }
+
+  .sticker {
+    font-size: 0.86rem;
+  }
+}
+
 /* Motion off switch — every animated selector added later is listed here. */
 @media (prefers-reduced-motion: reduce) {
+  .scene__sun,
+  .scene__cloud,
+  .kuska {
+    animation: none !important;
+  }
 }

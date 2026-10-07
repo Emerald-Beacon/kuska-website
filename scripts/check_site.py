@@ -221,6 +221,29 @@ def check_art():
     return [f"images/storybook/{name}: missing" for name in ART_FILES if not (base / name).exists()]
 
 
+HERO_LABEL = "ABA Therapy & Autism Evaluations · Bountiful & Draper"
+HERO_TITLE = "Your child's story is just getting started."
+
+
+def check_home_hero():
+    doc = Doc.load(ROOT / "index.html")
+    failures = []
+    if len(doc.find("h1")) != 1:
+        failures.append(f"index.html: expected exactly one <h1>, found {len(doc.find('h1'))}")
+    h1 = doc.text_of("h1")
+    for needed in (HERO_LABEL, HERO_TITLE):
+        if needed not in h1:
+            failures.append(f"index.html: <h1> must contain '{needed}' (found '{h1}')")
+    if not doc.find(cls="valley-hero"):
+        failures.append("index.html: missing .valley-hero section")
+    if len(doc.find("li", "sticker")) != 3:
+        failures.append("index.html: hero needs exactly 3 .sticker items")
+    exposed = re.findall(r'<svg\b(?![^>]*aria-hidden="true")[^>]*>\s*<use', doc.raw)
+    if exposed:
+        failures.append(f"index.html: {len(exposed)} sprite <svg> without aria-hidden='true'")
+    return failures
+
+
 CHECKS = [
     check_head,
     check_local_refs,
@@ -229,6 +252,7 @@ CHECKS = [
     check_tokens_and_contrast,
     check_sprite,
     check_art,
+    check_home_hero,
 ]
 
 

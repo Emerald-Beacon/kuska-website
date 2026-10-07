@@ -401,7 +401,6 @@ li {
   text-transform: uppercase;
 }
 
-.hero-badges,
 .chip-cloud,
 .footer-list,
 .logo-strip {
@@ -410,13 +409,6 @@ li {
   padding: 0;
 }
 
-.hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.hero-badges li,
 .chip-cloud span {
   display: inline-flex;
   align-items: center;
@@ -430,36 +422,8 @@ li {
   font-weight: 700;
 }
 
-.hero-photo-stack,
 .hero-portrait {
   position: relative;
-}
-
-.hero-photo-stack {
-  min-height: 540px;
-}
-
-.hero-photo {
-  position: absolute;
-  border-radius: 36px;
-  object-fit: cover;
-  box-shadow: var(--shadow-soft);
-}
-
-.hero-photo--large {
-  inset: 0 60px 80px 0;
-  width: auto;
-  height: 100%;
-}
-
-.hero-photo--small {
-  right: 0;
-  bottom: 0;
-  width: min(280px, 52%);
-  border: 10px solid #fff;
-}
-
-.hero-portrait {
   width: 100%;
   min-height: 380px;
   object-fit: cover;
@@ -1296,14 +1260,6 @@ li {
     max-width: none;
   }
 
-  .hero-photo-stack {
-    min-height: 380px;
-  }
-
-  .hero-photo--large {
-    inset: 0 24px 72px 0;
-  }
-
   .cta-band__inner {
     flex-direction: column;
     align-items: flex-start;
@@ -1353,11 +1309,6 @@ li {
     padding-bottom: 42px;
   }
 
-  .hero-photo-stack {
-    min-height: 320px;
-  }
-
-  .hero-badges li,
   .chip-cloud span {
     width: 100%;
     justify-content: center;
