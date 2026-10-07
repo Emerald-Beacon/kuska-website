@@ -448,6 +448,7 @@ li {
 .location-card,
 .sidebar-card,
 .faq-item,
+.condition-card,
 .prose-card {
   border: 1px solid rgba(0, 78, 133, 0.08);
   border-radius: var(--radius-lg);
@@ -484,6 +485,7 @@ li {
 .article-content li,
 .site-footer p,
 .faq-item p,
+.condition-card p,
 .prose-card p,
 .prose-card li {
   margin: 0;
@@ -761,6 +763,64 @@ li {
   padding: 0 26px 26px;
 }
 
+.condition-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.condition-card {
+  overflow: hidden;
+  align-self: start;
+}
+
+.condition-card summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 22px 24px;
+  list-style: none;
+  font-weight: 700;
+  color: var(--brand-blue-deep);
+  font-family: "Montserrat Alternates", sans-serif;
+  line-height: 1.45;
+}
+
+.condition-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.condition-card summary::after {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--brand-blue);
+  border-bottom: 2px solid var(--brand-blue);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.condition-card[open] summary::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.condition-card p {
+  padding: 0 24px 24px;
+}
+
+.prose-card--eeo {
+  margin-top: 28px;
+}
+
+.condition-note {
+  margin: 28px 0 0;
+  max-width: 68ch;
+  color: var(--brand-muted);
+}
+
 .cta-band {
   padding: 34px 0 70px;
 }
@@ -852,6 +912,14 @@ li {
   margin-top: 18px;
 }
 
+/* .prose-card p/li zero their margins above, which outranks the rule
+   above on specificity -- restate it so stacked paragraphs keep a gap. */
+.prose-card > p + p,
+.prose-card > ul + p,
+.prose-card > p + ul {
+  margin-top: 18px;
+}
+
 .prose-card h2 {
   margin-top: 34px;
   margin-bottom: 0;
@@ -926,7 +994,8 @@ li {
 
   .service-grid,
   .steps-grid,
-  .post-grid {
+  .post-grid,
+  .condition-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -994,6 +1063,7 @@ li {
   .service-grid,
   .steps-grid,
   .post-grid,
+  .condition-grid,
   .logo-strip {
     grid-template-columns: 1fr;
   }
@@ -1100,6 +1170,8 @@ li {
   .article-content p,
   .article-content li,
   .faq-item p,
+  .condition-card p,
+  .condition-note,
   .prose-card p,
   .prose-card li {
     max-width: none;
