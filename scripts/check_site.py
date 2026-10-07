@@ -317,6 +317,25 @@ def check_home_budget_and_images():
     return failures
 
 
+def check_motion_safety():
+    failures = []
+    css = (ROOT / "storybook.css").read_text(encoding="utf-8")
+    js = (ROOT / "site.js").read_text(encoding="utf-8")
+    for selector, body in re.findall(r"([^{}]*\[data-reveal\][^{}]*)\{([^}]*)\}", css):
+        if "opacity: 0" in body and ".can-reveal" not in selector:
+            failures.append("storybook.css: [data-reveal] hidden without .can-reveal guard")
+    if ".can-reveal [data-reveal]" not in css:
+        failures.append("storybook.css: missing .can-reveal [data-reveal] rule")
+    if "can-reveal" not in js or "prefers-reduced-motion" not in js:
+        failures.append("site.js: reveal must add can-reveal and respect prefers-reduced-motion")
+    elif js.index("can-reveal") > js.index("if (!toggle)"):
+        failures.append("site.js: reveal code must run before the nav-toggle early return")
+    count = Doc.load(ROOT / "index.html").raw.count("data-reveal")
+    if count < 12:
+        failures.append(f"index.html: expected at least 12 data-reveal elements, found {count}")
+    return failures
+
+
 CHECKS = [
     check_head,
     check_local_refs,
@@ -331,6 +350,7 @@ CHECKS = [
     check_home_trail_and_insurance,
     check_home_finale,
     check_home_budget_and_images,
+    check_motion_safety,
 ]
 
 
