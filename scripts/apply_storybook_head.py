@@ -29,6 +29,16 @@ def main():
             html,
             count=1,
         )
+        # Load the Google Fonts stylesheet without blocking first paint (fonts use display=swap).
+        blocking = f'<link href="{FONT_URL}" rel="stylesheet">'
+        if blocking in new:
+            indent = re.search(r"([ \t]*)" + re.escape(blocking), new).group(1)
+            new = new.replace(
+                blocking,
+                f'<link rel="preload" href="{FONT_URL}" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">\n'
+                f'{indent}<noscript><link rel="stylesheet" href="{FONT_URL}"></noscript>',
+                1,
+            )
         if STORY_LINK not in new:
             if SITE_LINK not in new:
                 raise SystemExit(f"{page}: no {SITE_LINK} to anchor on")

@@ -16,7 +16,8 @@
           <meta name="theme-color" content="#3989c9">
           <link rel="preconnect" href="https://fonts.googleapis.com">
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-          <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500..700,0..100,0..1&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+          <link rel="preload" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500..700,0..100,0..1&family=Montserrat:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+          <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500..700,0..100,0..1&family=Montserrat:wght@400;500;600;700;800&display=swap"></noscript>
           <link rel="icon" href="/wp-content/uploads/2025/05/cropped-kuska-autism-services-logo-32x32.png" sizes="32x32">
           <link rel="apple-touch-icon" href="/wp-content/uploads/2025/05/cropped-kuska-autism-services-logo-180x180.png">
           <link rel="stylesheet" href="/site.css">
@@ -52,7 +53,7 @@
           <main id="content" tabindex="-1">
         <section class="valley-hero sky--dawn" aria-labelledby="hero-title">
           <div class="scene" aria-hidden="true">
-            <img class="scene__painting" src="/images/storybook/valley-dawn.webp" alt="" width="1920" height="1080">
+            <img class="scene__painting" src="/images/storybook/valley-dawn-900.webp" srcset="/images/storybook/valley-dawn-900.webp 900w, /images/storybook/valley-dawn.webp 1920w" sizes="100vw" alt="" width="1920" height="1080" fetchpriority="high">
             <svg class="scene__sun" aria-hidden="true" focusable="false"><use href="/images/storybook/illustrations.svg#sun"></use></svg>
             <svg class="scene__cloud scene__cloud--one" aria-hidden="true" focusable="false"><use href="/images/storybook/illustrations.svg#cloud"></use></svg>
             <svg class="scene__cloud scene__cloud--two" aria-hidden="true" focusable="false"><use href="/images/storybook/illustrations.svg#cloud"></use></svg>
@@ -78,7 +79,7 @@
             </div>
             <div class="valley-hero__art">
               <figure class="photo-window photo-window--arch valley-hero__photo-a">
-                <img src="/wp-content/uploads/2025/11/a-woman-teaching-a-child-how-to-use-a-weighing-bal-2025-10-17-00-47-38-utc-980x653.jpg" alt="A clinician and a young child learning together with a balance scale" width="980" height="653" fetchpriority="high">
+                <img src="/wp-content/uploads/2025/11/a-woman-teaching-a-child-how-to-use-a-weighing-bal-2025-10-17-00-47-38-utc-980x653.jpg" alt="A clinician and a young child learning together with a balance scale" width="980" height="653" loading="eager">
               </figure>
               <figure class="photo-window photo-window--round valley-hero__photo-b">
                 <img src="/wp-content/uploads/2025/11/happy-parents-and-kids-spending-time-together-and-2025-03-18-14-21-06-utc-683x1024.jpg" alt="A family playing together on the living room floor" width="683" height="1024" loading="lazy">

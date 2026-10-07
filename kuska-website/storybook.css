@@ -948,6 +948,11 @@
   justify-content: center;
 }
 
+/* A deep-blue ring disappears on the twilight sky. */
+.starry-cta :focus-visible {
+  outline-color: #fff;
+}
+
 .scene__moon {
   position: absolute;
   top: 22%;

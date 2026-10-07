@@ -310,7 +310,7 @@ def check_home_budget_and_images():
     for i, tag in enumerate(imgs):
         if 'width="' not in tag or 'height="' not in tag:
             failures.append(f"index.html: main <img> #{i + 1} missing width/height")
-        is_first_hero_photo = 'fetchpriority="high"' in tag
+        is_first_hero_photo = 'fetchpriority="high"' in tag or 'loading="eager"' in tag
         is_hero_layer = 'class="scene__painting"' in tag or "valley-hero__kuska" in tag
         if not (is_first_hero_photo or is_hero_layer) and 'loading="lazy"' not in tag:
             failures.append(f"index.html: main <img> #{i + 1} should be loading=lazy")
