@@ -279,6 +279,44 @@ def check_home_trail_and_insurance():
     return failures
 
 
+def check_home_finale():
+    doc = Doc.load(ROOT / "index.html")
+    failures = []
+    if len(doc.find("article", "cottage")) != 2:
+        failures.append("index.html: locations need exactly 2 .cottage cards")
+    if len(doc.find("article", "book-card")) != 3:
+        failures.append("index.html: stories need exactly 3 .book-card articles")
+    if not doc.find("section", "starry-cta"):
+        failures.append("index.html: missing .starry-cta section")
+    for phone in ("tel:+18019807970",):
+        if phone not in doc.raw:
+            failures.append(f"index.html: missing {phone}")
+    for address in ("95 2200 S", "12055 S 700 E"):
+        if address not in doc.raw:
+            failures.append(f"index.html: missing address {address}")
+    return failures
+
+
+def check_home_budget_and_images():
+    doc = Doc.load(ROOT / "index.html")
+    failures = []
+    words = len(doc.text_of("main").split())
+    if words > 380:
+        failures.append(f"index.html: <main> has {words} words, budget is 380")
+    main_start = doc.raw.index("<main")
+    main_end = doc.raw.index("</main>")
+    main_html = doc.raw[main_start:main_end]
+    imgs = re.findall(r"<img\b[^>]*>", main_html)
+    for i, tag in enumerate(imgs):
+        if 'width="' not in tag or 'height="' not in tag:
+            failures.append(f"index.html: main <img> #{i + 1} missing width/height")
+        is_first_hero_photo = 'fetchpriority="high"' in tag
+        is_hero_layer = 'class="scene__painting"' in tag or "valley-hero__kuska" in tag
+        if not (is_first_hero_photo or is_hero_layer) and 'loading="lazy"' not in tag:
+            failures.append(f"index.html: main <img> #{i + 1} should be loading=lazy")
+    return failures
+
+
 CHECKS = [
     check_head,
     check_local_refs,
@@ -291,6 +329,8 @@ CHECKS = [
     check_home_meadow,
     check_home_name_story,
     check_home_trail_and_insurance,
+    check_home_finale,
+    check_home_budget_and_images,
 ]
 
 
