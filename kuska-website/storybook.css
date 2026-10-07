@@ -1,0 +1,7 @@
+/* Kuska Valley storybook components.
+   Loaded after site.css on every page. Homepage uses all of it in Phase 1;
+   interior pages adopt components in Phase 2. */
+
+/* Motion off switch — every animated selector added later is listed here. */
+@media (prefers-reduced-motion: reduce) {
+}
