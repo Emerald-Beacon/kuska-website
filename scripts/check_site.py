@@ -211,6 +211,16 @@ def check_sprite():
     return failures
 
 
+ART_FILES = ["kuska-waving.webp", "kuska-walking.webp", "kuska-reading.webp",
+             "kuska-sleeping.webp", "kuska-pointing.webp",
+             "photos/kuska-team-800.webp", "photos/drawing-800.webp"]
+
+
+def check_art():
+    base = ROOT / "images/storybook"
+    return [f"images/storybook/{name}: missing" for name in ART_FILES if not (base / name).exists()]
+
+
 CHECKS = [
     check_head,
     check_local_refs,
@@ -218,6 +228,7 @@ CHECKS = [
     check_css_base,
     check_tokens_and_contrast,
     check_sprite,
+    check_art,
 ]
 
 
