@@ -76,19 +76,43 @@
     });
   }
 
+  // WCAG 2.2.2: touch users can't hover, so the logo marquee gets a real pause control.
+  var marquee = document.querySelector(".logo-marquee");
+  var marqueeToggle = document.querySelector(".logo-marquee__toggle");
+  if (marquee && marqueeToggle) {
+    marqueeToggle.addEventListener("click", function () {
+      var paused = marquee.classList.toggle("is-paused");
+      marqueeToggle.textContent = paused ? "Play logos" : "Pause logos";
+    });
+  }
+
   if (!toggle) {
     return;
   }
 
-  toggle.addEventListener("click", function () {
-    var open = body.classList.toggle("nav-open");
+  // While the full-screen menu is open, everything behind it is inert so
+  // keyboard focus can't wander onto content the menu is covering.
+  var behindMenu = document.querySelectorAll(".announcement-bar, main, .site-footer");
+
+  function setMenuOpen(open) {
+    body.classList.toggle("nav-open", open);
     toggle.setAttribute("aria-expanded", String(open));
+    behindMenu.forEach(function (el) {
+      if (open) {
+        el.setAttribute("inert", "");
+      } else {
+        el.removeAttribute("inert");
+      }
+    });
+  }
+
+  toggle.addEventListener("click", function () {
+    setMenuOpen(!body.classList.contains("nav-open"));
   });
 
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && body.classList.contains("nav-open")) {
-      body.classList.remove("nav-open");
-      toggle.setAttribute("aria-expanded", "false");
+      setMenuOpen(false);
       toggle.focus();
     }
   });
@@ -107,7 +131,13 @@
       return;
     }
 
-    body.classList.remove("nav-open");
-    toggle.setAttribute("aria-expanded", "false");
+    setMenuOpen(false);
+  });
+
+  // Growing past the mobile breakpoint hides the menu; don't leave the page inert.
+  window.matchMedia("(min-width: 821px)").addEventListener("change", function (event) {
+    if (event.matches && body.classList.contains("nav-open")) {
+      setMenuOpen(false);
+    }
   });
 })();

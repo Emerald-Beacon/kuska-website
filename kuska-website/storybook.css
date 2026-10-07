@@ -757,6 +757,28 @@
   object-fit: contain;
 }
 
+.logo-marquee.is-paused .logo-marquee__track {
+  animation-play-state: paused;
+}
+
+.logo-marquee__controls {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-marquee__toggle {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 2px solid var(--sky);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--deep-blue);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 @keyframes kuska-marquee {
   to { transform: translateX(calc(-100% - 20px)); }
 }
@@ -1058,7 +1080,8 @@ body[data-page="index"] .site-footer::before {
     animation: none !important;
   }
 
-  .logo-marquee__track[aria-hidden="true"] {
+  .logo-marquee__track[aria-hidden="true"],
+  .logo-marquee__controls {
     display: none;
   }
 

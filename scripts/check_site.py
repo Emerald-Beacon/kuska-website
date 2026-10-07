@@ -336,6 +336,19 @@ def check_motion_safety():
     return failures
 
 
+def check_marquee_pausable():
+    """WCAG 2.2.2: moving content needs a pause control that works without hover/focus (touch)."""
+    doc = Doc.load(ROOT / "index.html")
+    if len(doc.find("button", "logo-marquee__toggle")) != 1:
+        return ["index.html: insurance marquee needs one button.logo-marquee__toggle"]
+    js = (ROOT / "site.js").read_text(encoding="utf-8")
+    if "logo-marquee__toggle" not in js or "is-paused" not in js:
+        return ["site.js: marquee toggle must set .is-paused and swap its Pause/Play label"]
+    if ".logo-marquee.is-paused .logo-marquee__track" not in (ROOT / "storybook.css").read_text(encoding="utf-8"):
+        return ["storybook.css: missing .logo-marquee.is-paused rule"]
+    return []
+
+
 CHECKS = [
     check_head,
     check_local_refs,
@@ -351,6 +364,7 @@ CHECKS = [
     check_home_finale,
     check_home_budget_and_images,
     check_motion_safety,
+    check_marquee_pausable,
 ]
 
 
