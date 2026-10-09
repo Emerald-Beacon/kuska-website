@@ -565,7 +565,11 @@
 
 .value-badge:nth-child(2) svg { background: #fbeec0; color: #8a6a00; }
 .value-badge:nth-child(3) svg { background: #fcdcd2; color: #a8432a; }
-.value-badge:nth-child(4) svg { background: #d6ebdc; color: #3f7a52; }
+.value-badge:nth-child(4) svg { background: #fde9c9; color: #9a5b13; }
+.value-badge:nth-child(5) svg { background: #d6ebdc; color: #3f7a52; }
+
+/* Odd count: the last badge spans the full row on the 2-column layout */
+.value-badge:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
 .value-badge strong {
   color: var(--deep-blue);

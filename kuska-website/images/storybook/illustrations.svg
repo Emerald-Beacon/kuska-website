@@ -42,6 +42,9 @@
     </g>
     <circle cx="12" cy="12" r="3.2" fill="#ebc94e"/>
   </symbol>
+  <symbol id="check" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5l5 5L20 6.5"/>
+  </symbol>
   <symbol id="trail" viewBox="0 0 1000 200" preserveAspectRatio="none">
     <path d="M20 160C200 40 320 180 500 100S800 30 980 120" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 18" vector-effect="non-scaling-stroke"/>
   </symbol>
