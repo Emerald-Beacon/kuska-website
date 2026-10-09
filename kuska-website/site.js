@@ -79,6 +79,32 @@
   // WCAG 2.2.2: touch users can't hover, so the logo marquee gets a real pause control.
   var marquee = document.querySelector(".logo-marquee");
   var marqueeToggle = document.querySelector(".logo-marquee__toggle");
+  // Each track slides left by its own width, so the copies behind it must cover
+  // the whole viewport or wide screens see the row run out before it loops.
+  // Add hidden copies until they do, then restart every track so they stay in step.
+  if (marquee && !reduceMotion) {
+    var fillMarquee = function () {
+      var tracks = marquee.querySelectorAll(".logo-marquee__track");
+      var trackWidth = tracks[0].offsetWidth;
+      if (!trackWidth) {
+        return;
+      }
+      var needed = Math.ceil(marquee.offsetWidth / trackWidth) + 1;
+      if (tracks.length >= needed) {
+        return;
+      }
+      for (var i = tracks.length; i < needed; i++) {
+        marquee.appendChild(tracks[tracks.length - 1].cloneNode(true));
+      }
+      tracks = marquee.querySelectorAll(".logo-marquee__track");
+      tracks.forEach(function (track) { track.style.animation = "none"; });
+      void marquee.offsetWidth;
+      tracks.forEach(function (track) { track.style.animation = ""; });
+    };
+    fillMarquee();
+    window.addEventListener("resize", fillMarquee);
+  }
+
   if (marquee && marqueeToggle) {
     marqueeToggle.addEventListener("click", function () {
       var paused = marquee.classList.toggle("is-paused");
