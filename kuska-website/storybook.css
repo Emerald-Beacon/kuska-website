@@ -515,9 +515,9 @@
 
 .name-story__kuska {
   position: absolute;
-  right: 0;
+  right: 2%;
   bottom: 0;
-  width: 60%;
+  width: 42%;
 }
 
 .name-story__copy h2 {
@@ -622,9 +622,9 @@
 
 .trail__kuska {
   position: absolute;
-  top: -50px;
-  left: -10px;
-  width: clamp(110px, 12vw, 170px);
+  top: -40px;
+  left: -40px;
+  width: clamp(100px, 10vw, 150px);
 }
 
 .trail__stops {
